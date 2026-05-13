@@ -106,7 +106,7 @@ export function Confirm({
               fontSize: 17,
             }}
           >
-            Cancel
+            Cancelar
           </Text>
         </Pressable>
       </View>
