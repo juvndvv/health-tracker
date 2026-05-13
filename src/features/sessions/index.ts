@@ -9,6 +9,7 @@ export const {
   abandonSession,
   lastSessionForExercise,
   listSessions,
+  listSessionsWithSets,
   getSessionWithSets,
   listSetsForExercise,
 } = sessionQueries;

@@ -122,6 +122,33 @@ export function makeSessionQueries(db: DrizzleDb) {
         .orderBy(desc(workoutSessions.startedAt), desc(workoutSessions.id));
     },
 
+    listSessionsWithSets: async (
+      { since }: { since?: number } = {},
+    ): Promise<{ session: WorkoutSession; sets: SessionSet[] }[]> => {
+      const sessions =
+        since === undefined
+          ? await db
+              .select()
+              .from(workoutSessions)
+              .orderBy(desc(workoutSessions.startedAt), desc(workoutSessions.id))
+          : await db
+              .select()
+              .from(workoutSessions)
+              .where(gte(workoutSessions.startedAt, since))
+              .orderBy(desc(workoutSessions.startedAt), desc(workoutSessions.id));
+
+      const out: { session: WorkoutSession; sets: SessionSet[] }[] = [];
+      for (const session of sessions) {
+        const sets = await db
+          .select()
+          .from(sessionSets)
+          .where(eq(sessionSets.sessionId, session.id))
+          .orderBy(asc(sessionSets.position));
+        out.push({ session, sets });
+      }
+      return out;
+    },
+
     getSessionWithSets: async (
       sessionId: number,
     ): Promise<{ session: WorkoutSession; sets: SessionSet[] } | null> => {

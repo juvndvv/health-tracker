@@ -11,6 +11,13 @@ export function useSessions() {
   });
 }
 
+export function useSessionsWithSets() {
+  return useQuery({
+    queryKey: [...sessionsKey, 'with-sets'] as const,
+    queryFn: () => sessionQueries.listSessionsWithSets({}),
+  });
+}
+
 export function useSession(id: number | null) {
   return useQuery({
     queryKey: id != null ? sessionKey(id) : ['sessions', 'none'],

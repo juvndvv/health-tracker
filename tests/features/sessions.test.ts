@@ -132,6 +132,33 @@ describe('sessions queries', () => {
     const sinceList = await ss.listSessions({ since: 200 });
     expect(sinceList.map((s) => s.id)).toEqual([b.id, c.id]);
   });
+
+  it('listSessionsWithSets pairs each session with its sets', async () => {
+    const { ss, routine, press, sentadilla } = await setup();
+    const a = await ss.startSession({ routineId: routine.id, routineName: routine.name });
+    await ss.appendSet({
+      sessionId: a.id,
+      exerciseId: press.id,
+      exerciseName: 'Press banca',
+      position: 0,
+      weightKg: 80,
+      reps: 8,
+    });
+    await ss.appendSet({
+      sessionId: a.id,
+      exerciseId: sentadilla.id,
+      exerciseName: 'Sentadilla',
+      position: 1,
+      weightKg: 100,
+      reps: 5,
+    });
+    const b = await ss.startSession({ routineId: routine.id, routineName: routine.name });
+
+    const list = await ss.listSessionsWithSets({});
+    expect(list.map((p) => p.session.id)).toEqual([b.id, a.id]);
+    expect(list[0]!.sets).toHaveLength(0);
+    expect(list[1]!.sets.map((s) => s.position)).toEqual([0, 1]);
+  });
 });
 
 describe('last-set autofill end-to-end', () => {
