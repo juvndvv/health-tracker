@@ -48,6 +48,7 @@ export default function RootLayout() {
       <QueryClientProvider client={queryClient}>
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="exercise/new" options={{ presentation: 'modal' }} />
         </Stack>
       </QueryClientProvider>
     </ThemeProvider>
