@@ -6,7 +6,7 @@
 
 **Architecture:** Single-user Expo SDK app with file-based routing (Expo Router), local SQLite via Drizzle ORM, transient UI state in Zustand, persisted reads cached via TanStack Query, charts on Victory Native XL + custom react-native-svg primitives. Visual reference of record is the HTML prototype bundled at `design/project/Health Tracker.html` — every screen should match it 1:1 in dark mode with the ember accent.
 
-**Tech Stack:** Expo SDK (latest), TypeScript (strict), Expo Router, expo-sqlite, Drizzle ORM + drizzle-kit, Zustand, TanStack Query, react-native-svg, Victory Native XL, @phosphor-icons/react-native, expo-font (Geist + Open Sauce One), date-fns (es locale), Vitest, React Native Testing Library.
+**Tech Stack:** Expo SDK (latest), TypeScript (strict), Expo Router, expo-sqlite, Drizzle ORM + drizzle-kit, Zustand, TanStack Query, react-native-svg, Victory Native XL, phosphor-react-native, expo-font (Geist + Open Sauce One), date-fns (es locale), Vitest, React Native Testing Library.
 
 ---
 
@@ -286,7 +286,7 @@ EOF
 
 ```bash
 npx expo install expo-sqlite expo-font react-native-svg react-native-reanimated
-npm install drizzle-orm @tanstack/react-query zustand date-fns @phosphor-icons/react-native
+npm install drizzle-orm @tanstack/react-query zustand date-fns phosphor-react-native
 npm install --save-dev drizzle-kit @types/react
 ```
 
