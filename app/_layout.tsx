@@ -5,6 +5,7 @@ import { ActivityIndicator, View } from 'react-native';
 import { useDbReady } from '@/db/client';
 import { seedIfEmpty } from '@/db/seed';
 import { useAppFonts } from '@/theme/fonts';
+import { ThemeProvider } from '@/theme/ThemeProvider';
 
 const queryClient = new QueryClient();
 
@@ -31,8 +32,10 @@ export default function RootLayout() {
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Stack screenOptions={{ headerShown: false }} />
-    </QueryClientProvider>
+    <ThemeProvider preference="dark">
+      <QueryClientProvider client={queryClient}>
+        <Stack screenOptions={{ headerShown: false }} />
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }
