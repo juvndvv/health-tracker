@@ -12,6 +12,14 @@ export function useAllExercises() {
   return useQuery({ queryKey: [...exercisesKey, 'all'], queryFn: () => exerciseQueries.listAll() });
 }
 
+export function useExercise(id: number | null) {
+  return useQuery({
+    queryKey: ['exercises', id],
+    queryFn: () => exerciseQueries.getById(id!),
+    enabled: id != null,
+  });
+}
+
 export function useCreateExercise() {
   const qc = useQueryClient();
   return useMutation({
