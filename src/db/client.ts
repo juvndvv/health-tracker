@@ -4,7 +4,7 @@ import { useMigrations } from 'drizzle-orm/expo-sqlite/migrator';
 import migrations from './migrations/migrations';
 import * as schema from './schema';
 
-export const sqlite = openDatabaseSync('health-tracker.db', { enableChangeListener: true });
+export const sqlite = openDatabaseSync('health-tracker.db');
 export const db = drizzle(sqlite, { schema });
 
 export function useDbReady() {
