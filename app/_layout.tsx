@@ -51,6 +51,9 @@ export default function RootLayout() {
           <Stack.Screen name="exercise/new" options={{ presentation: 'modal' }} />
           <Stack.Screen name="routine/edit" options={{ presentation: 'modal' }} />
           <Stack.Screen name="routine/[id]/add-item" options={{ presentation: 'modal' }} />
+          <Stack.Screen name="record-weight" options={{ presentation: 'modal' }} />
+          <Stack.Screen name="record-measurement" options={{ presentation: 'modal' }} />
+          <Stack.Screen name="measurement-type/new" options={{ presentation: 'modal' }} />
         </Stack>
       </QueryClientProvider>
     </ThemeProvider>
