@@ -57,6 +57,7 @@ export default function RootLayout() {
           <Stack.Screen name="settings" options={{ presentation: 'modal' }} />
           <Stack.Screen name="workout/start" options={{ presentation: 'modal' }} />
           <Stack.Screen name="workout/[sessionId]" options={{ presentation: 'fullScreenModal' }} />
+          <Stack.Screen name="workout-summary/[sessionId]" options={{ presentation: 'fullScreenModal' }} />
         </Stack>
       </QueryClientProvider>
     </ThemeProvider>
