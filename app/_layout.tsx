@@ -55,6 +55,8 @@ export default function RootLayout() {
           <Stack.Screen name="record-measurement" options={{ presentation: 'modal' }} />
           <Stack.Screen name="measurement-type/new" options={{ presentation: 'modal' }} />
           <Stack.Screen name="settings" options={{ presentation: 'modal' }} />
+          <Stack.Screen name="workout/start" options={{ presentation: 'modal' }} />
+          <Stack.Screen name="workout/[sessionId]" options={{ presentation: 'fullScreenModal' }} />
         </Stack>
       </QueryClientProvider>
     </ThemeProvider>
