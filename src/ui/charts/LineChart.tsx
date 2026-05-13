@@ -1,4 +1,4 @@
-import Svg, { Path, Line, Defs, LinearGradient, Stop, Text as SvgText, Circle } from 'react-native-svg';
+import Svg, { Path, Line, Defs, LinearGradient, Stop, Text as SvgText, Circle, G } from 'react-native-svg';
 import { View, Text } from 'react-native';
 import { useTheme } from '@/theme/useTheme';
 
@@ -73,10 +73,10 @@ export function LineChart({
         const cx = xScale(idx);
         const cy = yScale(points[idx]!.y);
         return (
-          <>
-            <Circle key={`pr-ring-${idx}`} cx={cx} cy={cy} r={6} fill={dotBg} stroke={color} strokeWidth={2} />
-            <Circle key={`pr-dot-${idx}`} cx={cx} cy={cy} r={2.2} fill={color} />
-          </>
+          <G key={idx}>
+            <Circle cx={cx} cy={cy} r={6} fill={dotBg} stroke={color} strokeWidth={2} />
+            <Circle cx={cx} cy={cy} r={2.2} fill={color} />
+          </G>
         );
       })}
 
