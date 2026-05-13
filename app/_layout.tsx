@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { useDbReady } from '@/db/client';
 import { seedIfEmpty } from '@/db/seed';
+import { useAppFonts } from '@/theme/fonts';
 
 const queryClient = new QueryClient();
 
 export default function RootLayout() {
   const { ready, error } = useDbReady();
+  const [fontsLoaded] = useAppFonts();
   const [seeded, setSeeded] = useState(false);
   const [seedError, setSeedError] = useState<unknown>(null);
 
@@ -20,7 +22,7 @@ export default function RootLayout() {
 
   if (error) throw error;
   if (seedError) throw seedError;
-  if (!ready || !seeded) {
+  if (!ready || !seeded || !fontsLoaded) {
     return (
       <View style={{ flex: 1, justifyContent: 'center' }}>
         <ActivityIndicator />
